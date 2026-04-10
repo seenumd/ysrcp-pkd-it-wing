@@ -106,6 +106,14 @@ export default function App() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Phone number validation: must be exactly 10 digits
+    const phoneDigits = formData.phone.replace(/\D/g, '');
+    if (phoneDigits.length !== 10) {
+      alert('Please enter a correct 10-digit phone number.');
+      return;
+    }
+
     if (!formData.consent) {
       alert('Please agree to the terms and conditions.');
       return;
@@ -349,19 +357,6 @@ export default function App() {
                   <h2 className="text-2xl md:text-5xl font-headline font-black text-primary uppercase tracking-tighter">Join the Revolution</h2>
                   <div className="w-16 md:w-20 h-1 bg-deep-green mx-auto"></div>
                   
-                  {dbConnectionStatus === 'connected' && (
-                    <div className="flex items-center justify-center gap-2 text-green-600 text-xs font-bold uppercase tracking-widest">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      Database Connected
-                    </div>
-                  )}
-                  {dbConnectionStatus === 'failed' && (
-                    <div className="flex items-center justify-center gap-2 text-red-600 text-xs font-bold uppercase tracking-widest">
-                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                      Database Connection Failed
-                    </div>
-                  )}
-
                   <p className="text-slate-500 max-w-2xl mx-auto font-medium text-base md:text-lg leading-relaxed">
                     Be a part of the Penugonda IT Wing. Your skills are the engine of our technological progress.
                   </p>
@@ -387,8 +382,11 @@ export default function App() {
                           type="tel" 
                           required
                           value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder="+91 00000 00000"
+                          onChange={(e) => {
+                            const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                            setFormData({ ...formData, phone: value });
+                          }}
+                          placeholder="Enter 10-digit number"
                           className="w-full bg-slate-50 border-0 border-b-2 border-slate-200 focus:border-deep-green focus:ring-0 px-0 py-3 text-lg font-semibold transition-all"
                         />
                       </div>
