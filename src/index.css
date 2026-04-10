@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&family=Noto+Sans+Telugu:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Plus Jakarta Sans", "Noto Sans Telugu", sans-serif;
+  --font-body: "Poppins", "Noto Sans Telugu", sans-serif;
+
+  --color-primary: #00205B;
+  --color-secondary: #009639;
+  --color-vibrant-green: #009639;
+  --color-deep-green: #006e0b;
+  --color-sky-blue: #00AEEF;
+  --color-tertiary: #f5c800;
+}
+
+@layer utilities {
+  .ysrcp-futuristic-gradient {
+    background: linear-gradient(135deg, 
+        #00205B 0%, 
+        #00AEEF 35%, 
+        #00E676 70%, 
+        #009639 100%
+    );
+    background-size: 200% 200%;
+    animation: gradient-flow 15s ease infinite;
+  }
+
+  .digital-grid {
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .form-glass {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  }
+
+  .green-glossy-btn {
+    background: linear-gradient(180deg, #009639 0%, #006e0b 100%);
+    box-shadow: 0 4px 15px rgba(0, 110, 11, 0.4), inset 0 1px 1px rgba(255,255,255,0.2);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .green-glossy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 110, 11, 0.6), inset 0 1px 1px rgba(255,255,255,0.3);
+  }
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
