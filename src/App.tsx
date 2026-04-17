@@ -194,23 +194,25 @@ export default function App() {
             YSRCP IT WING
           </motion.div>
           
-          <nav className="hidden md:flex gap-10 items-center">
-            {['HOME', 'ABOUT'].map((item) => (
-              <a 
-                key={item} 
-                href="#" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (item === 'HOME') setView('home');
-                }}
-                className={`font-headline font-bold text-sm tracking-widest hover:text-white transition-colors ${ (item === 'HOME' && view === 'home') ? 'text-white border-b-2 border-white pb-1' : 'text-white/70'}`}
-              >
-                {item}
-              </a>
-            ))}
+          <nav className="flex gap-4 items-center">
+            <div className="hidden md:flex gap-10 items-center">
+              {['HOME', 'ABOUT'].map((item) => (
+                <a 
+                  key={item} 
+                  href="#" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (item === 'HOME') setView('home');
+                  }}
+                  className={`font-headline font-bold text-sm tracking-widest hover:text-white transition-colors ${ (item === 'HOME' && view === 'home') ? 'text-white border-b-2 border-white pb-1' : 'text-white/70'}`}
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
             <button 
               onClick={handleReportsClick}
-              className={`font-headline font-bold px-5 py-2 rounded transition-all shadow-md text-xs tracking-widest ${view === 'reports' ? 'bg-gold text-primary' : 'bg-secondary text-white hover:bg-deep-green'}`}
+              className={`font-headline font-bold px-4 py-2 md:px-5 md:py-2 rounded transition-all shadow-md text-[10px] md:text-xs tracking-widest whitespace-nowrap ${view === 'reports' ? 'bg-gold text-primary' : 'bg-secondary text-white hover:bg-deep-green'}`}
             >
               {view === 'reports' ? 'BACK TO HOME' : 'REPORTS'}
             </button>
@@ -229,33 +231,34 @@ export default function App() {
               className="flex-grow flex flex-col"
             >
               {/* Hero Section */}
-              <section className="relative h-[50vh] min-h-[400px] ysrcp-gradient animate-gradient-flow overflow-hidden flex items-end">
+              <section className="relative h-[50vh] min-h-[320px] md:min-h-[400px] ysrcp-gradient animate-gradient-flow overflow-hidden flex items-end">
                 <div className="absolute inset-0 digital-grid opacity-20" />
                 
-                <div className="w-full flex h-full">
-                  {/* Left Leader */}
-                  <div className="flex-1 relative flex flex-col justify-end overflow-hidden group">
+                <div className="w-full flex h-full items-end">
+                  {/* Left Leader (Full Sidebar) */}
+                  <div className="flex-1 relative h-full flex flex-col justify-end overflow-hidden group">
                     <img 
                       src={LEADERS.jagan} 
                       alt="Y.S. Jagan Mohan Reddy" 
                       className="absolute inset-0 w-full h-full object-cover object-top filter brightness-90 group-hover:brightness-100 transition-all duration-700"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="relative z-10 pb-8 text-center bg-gradient-to-t from-primary/60 to-transparent pt-20">
-                      <span className="text-[10px] md:text-xs text-white font-headline font-black tracking-[0.2em] px-4 py-1.5 bg-primary/40 backdrop-blur-md rounded uppercase">
-                        Y.S. Jagan Mohan Reddy
+                    <div className="relative z-10 pb-4 md:pb-8 text-center bg-gradient-to-t from-primary/60 to-transparent pt-12 md:pt-20">
+                      <span className="text-[7px] md:text-xs text-white font-headline font-black tracking-[0.2em] px-2 md:px-4 py-1 md:py-1.5 bg-primary/40 backdrop-blur-md rounded uppercase whitespace-nowrap">
+                        Y.S. Jagan
                       </span>
                     </div>
                   </div>
 
                   {/* Center Brand */}
-                  <div className="flex-[1.2] relative z-20 flex flex-col items-center justify-center gap-6 md:gap-8 px-4">
-                    <div className="flex items-center gap-4 md:gap-8">
+                  <div className="flex-[1.2] relative h-full z-20 flex flex-col items-center justify-center gap-2 md:gap-8 px-2 md:px-4">
+                    <div className="flex items-center justify-center gap-2 md:gap-8">
+                      {/* Left Circular Leader */}
                       <motion.div 
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="hidden md:block w-20 h-20 lg:w-24 lg:h-24 rounded-full border-4 border-white shadow-2xl overflow-hidden"
+                        className="w-10 h-10 md:w-24 md:h-24 rounded-full border-2 md:border-4 border-white shadow-2xl overflow-hidden shrink-0"
                       >
                         <img src={LEADERS.ysr} alt="YS Rajasekhara Reddy" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                       </motion.div>
@@ -264,58 +267,50 @@ export default function App() {
                         <motion.div 
                           initial={{ y: 20, opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
-                          className="w-20 h-20 md:w-28 md:h-28 rounded-full border-2 border-white/50 p-2 shadow-2xl bg-white/10 backdrop-blur-md mb-4"
+                          className="w-10 h-10 md:w-28 md:h-28 rounded-full border border-white/50 p-1 md:p-2 shadow-2xl bg-white/10 backdrop-blur-md mb-1 md:mb-4"
                         >
                           <img src={LEADERS.emblem} alt="YSRCP Emblem" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
                         </motion.div>
                         <motion.h1 
-                          initial={{ y: 20, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          transition={{ delay: 0.3 }}
-                          className="text-2xl md:text-4xl font-headline font-black text-white tracking-tighter drop-shadow-lg mb-1"
+                          className="text-[10px] md:text-4xl font-headline font-black text-white tracking-tighter drop-shadow-lg mb-0.5 uppercase leading-none"
                         >
                           YSRCP IT WING
                         </motion.h1>
                         <motion.p 
-                          initial={{ y: 20, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          transition={{ delay: 0.4 }}
-                          className="text-xs md:text-sm font-bold text-white/90 mb-4 font-headline"
+                          className="text-[7px] md:text-sm font-bold text-white/90 mb-1 md:mb-4 font-headline uppercase"
                         >
-                          వైఎస్ఆర్ కాంగ్రెస్ పార్టీ ఐటీ వింగ్
+                          IT WING
                         </motion.p>
                         <motion.div 
-                          initial={{ scale: 0.8, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{ delay: 0.5 }}
-                          className="px-6 py-1.5 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full text-white font-black tracking-[0.2em] text-[10px] uppercase"
+                          className="px-2 md:px-6 py-0.5 md:py-1.5 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full text-white font-black tracking-[0.1em] md:tracking-[0.2em] text-[5px] md:text-[10px] uppercase whitespace-nowrap"
                         >
-                          PENUGONDA CONSTITUENCY
+                          PENUGONDA
                         </motion.div>
                       </div>
 
+                      {/* Right Circular Leader */}
                       <motion.div 
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="hidden md:block w-20 h-20 lg:w-24 lg:h-24 rounded-full border-4 border-white shadow-2xl overflow-hidden"
+                        className="w-10 h-10 md:w-24 md:h-24 rounded-full border-2 md:border-4 border-white shadow-2xl overflow-hidden shrink-0"
                       >
                         <img src={LEADERS.charan} alt="Leader" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                       </motion.div>
                     </div>
                   </div>
 
-                  {/* Right Leader */}
-                  <div className="flex-1 relative flex flex-col justify-end overflow-hidden group">
+                  {/* Right Leader (Full Sidebar) */}
+                  <div className="flex-1 relative h-full flex flex-col justify-end overflow-hidden group">
                     <img 
                       src={LEADERS.usha} 
                       alt="K.v. ushasri charan" 
                       className="absolute inset-0 w-full h-full object-cover object-top filter brightness-90 group-hover:brightness-100 transition-all duration-700"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="relative z-10 pb-8 text-center bg-gradient-to-t from-primary/60 to-transparent pt-20">
-                      <span className="text-[10px] md:text-xs text-white font-headline font-black tracking-[0.2em] px-4 py-1.5 bg-primary/40 backdrop-blur-md rounded uppercase">
-                        K.v. ushasri charan
+                    <div className="relative z-10 pb-4 md:pb-8 text-center bg-gradient-to-t from-primary/60 to-transparent pt-12 md:pt-20">
+                      <span className="text-[7px] md:text-xs text-white font-headline font-black tracking-[0.2em] px-2 md:px-4 py-1 md:py-1.5 bg-primary/40 backdrop-blur-md rounded uppercase whitespace-nowrap">
+                        K.v. ushasri
                       </span>
                     </div>
                   </div>
@@ -356,7 +351,7 @@ export default function App() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="glass-card rounded-[2.5rem] p-8 md:p-16"
+                    className="glass-card rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-16"
                   >
                     {registrationStatus === 'success' || registrationStatus === 'exists' ? (
                       <div className="text-center space-y-8 py-10">
@@ -553,64 +548,58 @@ export default function App() {
               exit={{ opacity: 0 }}
               className="flex-grow flex flex-col"
             >
-              {/* Reports Hero Section (Same as Home) */}
-              <section className="relative h-[40vh] min-h-[350px] ysrcp-gradient animate-gradient-flow overflow-hidden flex items-end">
+              {/* Reports Hero Section */}
+              <section className="relative h-[35vh] min-h-[300px] ysrcp-gradient animate-gradient-flow overflow-hidden flex items-end">
                 <div className="absolute inset-0 digital-grid opacity-20" />
-                
-                <div className="w-full flex h-full">
+                <div className="w-full flex h-full items-end">
                   {/* Left Leader */}
-                  <div className="flex-1 relative flex flex-col justify-end overflow-hidden group">
+                  <div className="flex-1 relative h-full flex flex-col justify-end overflow-hidden group">
                     <img 
                       src={LEADERS.jagan} 
                       alt="Y.S. Jagan Mohan Reddy" 
                       className="absolute inset-0 w-full h-full object-cover object-top filter brightness-90 group-hover:brightness-100 transition-all duration-700"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="relative z-10 pb-6 text-center bg-gradient-to-t from-primary/60 to-transparent pt-12">
-                      <span className="text-[9px] md:text-[10px] text-white font-headline font-black tracking-[0.2em] px-3 py-1 bg-primary/40 backdrop-blur-md rounded uppercase">
-                        Y.S. Jagan Mohan Reddy
+                    <div className="relative z-10 pb-4 md:pb-6 text-center bg-gradient-to-t from-primary/60 to-transparent pt-12">
+                      <span className="text-[7px] md:text-[10px] text-white font-headline font-black tracking-[0.2em] px-2 md:px-3 py-0.5 md:py-1 bg-primary/40 backdrop-blur-md rounded uppercase whitespace-nowrap">
+                        Y.S. Jagan
                       </span>
                     </div>
                   </div>
 
                   {/* Center Brand */}
-                  <div className="flex-[1.2] relative z-20 flex flex-col items-center justify-center gap-4 md:gap-6 px-4">
-                    <div className="flex items-center gap-4 md:gap-6">
+                  <div className="flex-[1.2] relative h-full z-20 flex flex-col items-center justify-center gap-2 md:gap-6 px-2 md:px-4">
+                    <div className="flex items-center justify-center gap-2 md:gap-6">
                       <motion.div 
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        className="hidden md:block w-16 h-16 lg:w-20 lg:h-20 rounded-full border-4 border-white shadow-2xl overflow-hidden"
+                        className="w-8 h-8 md:w-20 md:h-20 rounded-full border-2 md:border-4 border-white shadow-2xl overflow-hidden shrink-0"
                       >
                         <img src={LEADERS.ysr} alt="YS Rajasekhara Reddy" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                       </motion.div>
 
                       <div className="flex flex-col items-center text-center">
                         <motion.div 
-                          className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-white/50 p-2 shadow-2xl bg-white/10 backdrop-blur-md mb-2"
+                          className="w-8 h-8 md:w-20 md:h-20 rounded-full border border-white/50 p-1 md:p-2 shadow-2xl bg-white/10 backdrop-blur-md mb-1"
                         >
                           <img src={LEADERS.emblem} alt="YSRCP Emblem" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
                         </motion.div>
                         <motion.h1 
-                          className="text-lg md:text-2xl font-headline font-black text-white tracking-tighter drop-shadow-lg"
+                          className="text-[9px] md:text-2xl font-headline font-black text-white tracking-tighter drop-shadow-lg uppercase leading-none"
                         >
                           YSRCP IT WING
                         </motion.h1>
                         <motion.p 
-                          className="text-[10px] md:text-xs font-bold text-white/90 mb-2 font-headline"
+                          className="text-[6px] md:text-xs font-bold text-white/90 mb-1 font-headline uppercase"
                         >
-                          వైఎస్ఆర్ కాంగ్రెస్ పార్టీ ఐటీ వింగ్
+                          IT WING
                         </motion.p>
-                        <motion.div 
-                          className="px-4 py-1 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full text-white font-black tracking-[0.2em] text-[8px] uppercase"
-                        >
-                          REPORTS PORTAL
-                        </motion.div>
                       </div>
 
                       <motion.div 
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        className="hidden md:block w-16 h-16 lg:w-20 lg:h-20 rounded-full border-4 border-white shadow-2xl overflow-hidden"
+                        className="w-8 h-8 md:w-20 md:h-20 rounded-full border-2 md:border-4 border-white shadow-2xl overflow-hidden shrink-0"
                       >
                         <img src={LEADERS.charan} alt="Leader" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                       </motion.div>
@@ -618,16 +607,16 @@ export default function App() {
                   </div>
 
                   {/* Right Leader */}
-                  <div className="flex-1 relative flex flex-col justify-end overflow-hidden group">
+                  <div className="flex-1 relative h-full flex flex-col justify-end overflow-hidden group">
                     <img 
                       src={LEADERS.usha} 
                       alt="K.v. ushasri charan" 
                       className="absolute inset-0 w-full h-full object-cover object-top filter brightness-90 group-hover:brightness-100 transition-all duration-700"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="relative z-10 pb-6 text-center bg-gradient-to-t from-primary/60 to-transparent pt-12">
-                      <span className="text-[9px] md:text-[10px] text-white font-headline font-black tracking-[0.2em] px-3 py-1 bg-primary/40 backdrop-blur-md rounded uppercase">
-                        K.v. ushasri charan
+                    <div className="relative z-10 pb-4 md:pb-6 text-center bg-gradient-to-t from-primary/60 to-transparent pt-12">
+                      <span className="text-[7px] md:text-[10px] text-white font-headline font-black tracking-[0.2em] px-2 md:px-3 py-0.5 md:py-1 bg-primary/40 backdrop-blur-md rounded uppercase whitespace-nowrap">
+                        K.v. ushasri
                       </span>
                     </div>
                   </div>
@@ -796,7 +785,7 @@ export default function App() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-[2rem] p-10 max-w-md w-full shadow-2xl relative overflow-hidden"
+              className="bg-white rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 max-w-md w-full shadow-2xl relative overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-full h-2 ysrcp-gradient" />
               <button 
@@ -844,21 +833,21 @@ export default function App() {
       </AnimatePresence>
 
       {/* Footer */}
-      <footer className="bg-primary-dark text-white py-20 px-12 border-t border-white/5">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-16">
-          <div className="space-y-6 text-center md:text-left max-md">
-            <h3 className="text-2xl font-black tracking-[0.3em] font-headline uppercase">YSRCP IT WING</h3>
-            <p className="text-white/40 font-medium text-sm leading-relaxed">
+      <footer className="bg-primary-dark text-white py-12 md:py-20 px-6 md:px-12 border-t border-white/5">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 md:gap-16">
+          <div className="space-y-4 md:space-y-6 text-center md:text-left">
+            <h3 className="text-xl md:text-2xl font-black tracking-[0.3em] font-headline uppercase">YSRCP IT WING</h3>
+            <p className="text-white/40 font-medium text-[10px] md:text-sm leading-relaxed max-w-sm">
               © 2024 YSRCP IT Wing. Building the digital future of Andhra Pradesh through innovation and grassroots empowerment.
             </p>
           </div>
           
-          <div className="flex flex-wrap justify-center md:justify-end gap-10 md:gap-14">
+          <div className="flex flex-wrap justify-center md:justify-end gap-6 md:gap-14 leading-none">
             {['PRIVACY', 'TERMS', 'VOLUNTEER', 'MEDIA'].map((link) => (
               <a 
                 key={link} 
                 href="#" 
-                className="text-xs font-black text-white/50 hover:text-gold transition-colors tracking-widest"
+                className="text-[9px] md:text-xs font-black text-white/50 hover:text-gold transition-colors tracking-widest"
               >
                 {link}
               </a>
