@@ -1,5 +1,6 @@
 {
   "name": "YSRCP IT Wing Portal",
-  "description": "Official digital portal for YSRCP IT Wing Penugonda Constituency, featuring member registration and reporting.",
-  "requestFramePermissions": []
+  "description": "Digital registration portal for the Penugonda YSRCP IT Wing, enabling technological progress and grassroots connection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
 }

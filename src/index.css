@@ -6,53 +6,55 @@
   --font-body: "Poppins", "Noto Sans Telugu", sans-serif;
 
   --color-primary: #00205B;
+  --color-primary-dark: #000a1e;
   --color-secondary: #009639;
-  --color-vibrant-green: #009639;
   --color-deep-green: #006e0b;
+  --color-vibrant-green: #00E676;
   --color-sky-blue: #00AEEF;
-  --color-tertiary: #f5c800;
+  --color-gold: #f5c800;
+
+  --animate-gradient-flow: gradient-flow 15s ease infinite;
+
+  @keyframes gradient-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[#f8f9fa] text-slate-900 font-body antialiased;
+  }
 }
 
 @layer utilities {
-  .ysrcp-futuristic-gradient {
+  .ysrcp-gradient {
     background: linear-gradient(135deg, 
-        #00205B 0%, 
-        #00AEEF 35%, 
-        #00E676 70%, 
-        #009639 100%
+      #00205B 0%, 
+      #00AEEF 35%, 
+      #00E676 70%, 
+      #009639 100%
     );
     background-size: 200% 200%;
-    animation: gradient-flow 15s ease infinite;
   }
 
   .digital-grid {
     background-image: 
-        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
-  .form-glass {
+  .glass-card {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
   }
 
-  .green-glossy-btn {
+  .glossy-button {
     background: linear-gradient(180deg, #009639 0%, #006e0b 100%);
     box-shadow: 0 4px 15px rgba(0, 110, 11, 0.4), inset 0 1px 1px rgba(255,255,255,0.2);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
-
-  .green-glossy-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 110, 11, 0.6), inset 0 1px 1px rgba(255,255,255,0.3);
-  }
-}
-
-@keyframes gradient-flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
