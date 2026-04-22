@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import {
   AlertCircle,
   Check,
@@ -17,7 +17,6 @@ import partyLogo from "./assets/leaders/logo.jpeg";
 import ushaImage from "./assets/leaders/ushamma1.png";
 import ysrImage from "./assets/leaders/ysr.jpeg";
 import { supabase } from "./lib/supabase";
-import './styles/banner.css';
 
 type View = "home" | "reports";
 
@@ -634,7 +633,7 @@ export default function App() {
                       transition={{ delay: 0.2 }}
                       className="mx-auto mt-6 max-w-2xl text-base font-medium leading-7 text-slate-600 md:text-lg"
                     >
-                      Be part of the Penugonda IT Wing. Be the change. Be the support. Work together to build a stronger Andhra Pradesh
+                      Be part of the Penugonda IT Wing. The form now uses larger touch targets, calmer spacing, and a more premium party-led visual language on mobile.
                     </motion.p>
                   </div>
 
@@ -1060,34 +1059,9 @@ export default function App() {
           )}
         </AnimatePresence>
       </main>
-
-      {/* Reports secret modal */}
-      {showSecretModal && (
-        <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-          <div className="w-full max-w-md rounded bg-white p-6">
-            <h3 className="text-lg font-semibold">Enter Reports Secret</h3>
-            <input
-              value={enteredKey}
-              onChange={(e) => setEnteredKey(e.target.value)}
-              className="mt-3 w-full rounded border px-3 py-2"
-              placeholder="Secret key"
-            />
-            {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
-            <div className="mt-4 flex justify-end gap-2">
-              <button onClick={() => setShowSecretModal(false)} className="px-3 py-1 rounded border">
-                Cancel
-              </button>
-              <button onClick={verifyKey} className="px-3 py-1 rounded bg-blue-600 text-white">
-                Verify
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
-
 
 
 

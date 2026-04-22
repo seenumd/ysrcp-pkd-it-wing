@@ -1,0 +1,38 @@
+.banner-wrapper {
+  position: relative;
+  height: 320px; /* adjust as needed */
+  overflow: hidden;
+  background: var(--banner-bg, transparent);
+}
+
+/* Fixed-size side images that always keep their width */
+.banner-left,
+.banner-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 240px; /* fixed width, won't change on resize */
+  min-width: 240px;
+  max-width: 240px;
+  object-fit: cover;
+  z-index: 10;
+}
+
+/* position */
+.banner-left { left: 0; }
+.banner-right { right: 0; }
+
+/* center area gets margin to make room for side images */
+.banner-center {
+  margin: 0 240px; /* same as side image width */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 20;
+}
+
+/* ensure images don't capture pointer if you want clicks to pass to center */
+.banner-left,
+.banner-right { pointer-events: none; }
